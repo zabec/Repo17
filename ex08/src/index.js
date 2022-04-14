@@ -1,14 +1,54 @@
-const range = {
-    max: 100.00,
-    min: -25.00,
-    num1: 17.50,
-    num2: 88.80,
-    average: 45.325
-};
+var users = [
+    {
+        firstName: "John",
+        lastName: "Doe",
+        age: 24,
+        gender: "male"
+    },
+    {
+        firstName: "Jane",
+        lastName: "Doe",
+        age: 5,
+        gender: "female"
+    },
+    {
+        firstName: "Jim",
+        lastName: "Carrey",
+        age: 54,
+        gender: "male"
+    },
+    {
+        firstName: "Kate",
+        lastName: "Winslet",
+        age: 40,
+        gender: "female"
+    }
+];
 
-// Only change code below this line
-const middle = ({ max, min }) => (max + min) / 2.0;
-// Only change code above this line
+function getUsers() {
+    var output = "";
+    for (let i = 0; i < users.length; i++) {
+        output += `${users[i].firstName} ${users[i].lastName} is ${users[i].age}, ${users[i].gender} \n`;
+    }
+    return output;
 
-console.log(middle(range));
-module.exports = middle;
+}
+function findUser(lastName, gender) {
+    try {
+        var user = users.find(x => x.lastName === lastName && x.gender === gender);
+        var iFindUser = `${user.firstName} ${user.lastName} is ${user.age}, ${user.gender}`;
+
+        console.log(iFindUser);
+        return iFindUser;
+
+
+    } catch (error) {
+        console.log("Cannot read property 'firstName' of undefined");
+    }
+
+}
+
+console.log(getUsers());
+findUser("Carrey", "male");
+
+module.exports = findUser;
